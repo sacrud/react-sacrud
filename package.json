@@ -1,8 +1,8 @@
 {
   "name": "react-sacrud",
-  "version": "0.2.2",
+  "version": "0.0.3",
   "description": "React AJAX CRUD interface connected to any backends",
-  "main": "lib/react-sacrud.js",
+  "main": "lib/react-sacrud.min.js",
   "scripts": {
     "build": "webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",

@@ -10,7 +10,7 @@ import { List } from './crud/List';
 
 export class BasePages {
   constructor() {
-    this.root = document.getElementById("ps-app");
+    this.root = document.getElementById("sacrud-app");
     this.breadcrumbs = JSON.parse(this.root.dataset.breadcrumbs);
   }
 
