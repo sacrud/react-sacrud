@@ -4,4 +4,4 @@ export { Header } from './js/compponents/Header';
 export { Dashboard } from './js/compponents/Dashboard';
 export { Breadcrumbs } from './js/compponents/Breadcrumbs';
 
-export { Pages } from './js/pages'
+export { Pages, Crud } from './js/pages';

@@ -6,8 +6,9 @@ import { Header } from './compponents/Header';
 import { Dashboard } from './compponents/Dashboard';
 import { Breadcrumbs } from './compponents/Breadcrumbs';
 
-export class Pages {
+import { List } from './crud/List';
 
+export class BasePages {
   constructor() {
     this.root = document.getElementById("ps-app");
     this.breadcrumbs = JSON.parse(this.root.dataset.breadcrumbs);
@@ -19,7 +20,9 @@ export class Pages {
       this.root
     );
   }
+}
 
+export class Pages extends BasePages {
   pageMain() {
     let content = (
       <div>
@@ -35,6 +38,18 @@ export class Pages {
       <div>
         <Header/>
         <Dashboard/>
+      </div>
+    );
+    this.render(content);
+  }
+}
+
+export class Crud extends BasePages {
+  pageList() {
+    let content = (
+      <div>
+        <Header/>
+        <List/>
       </div>
     );
     this.render(content);
