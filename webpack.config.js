@@ -10,8 +10,21 @@ let libraryName = 'react-sacrud';
 let plugins = [], outputFile;
 
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
   outputFile = libraryName + '.min.js';
+  plugins.push(new UglifyJsPlugin({
+      minimize: true ,
+      beautify: false,
+      comments: false,
+      compress: {
+          sequences   : true,
+          booleans    : true,
+          loops       : true,
+          unused      : true,
+          warnings    : false,
+          drop_console: true,
+          unsafe      : true
+      }
+  }));
 } else {
   outputFile = libraryName + '.js';
 }

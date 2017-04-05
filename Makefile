@@ -5,8 +5,9 @@
 
 frontend-ncu:
 	npm i -g npm-check-updates
-	npm-check-updates -u
+	ncu -u
 	npm install
+	ncu -a
 
 
 # vim:ft=make

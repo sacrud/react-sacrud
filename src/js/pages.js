@@ -6,7 +6,7 @@ import { Header } from './compponents/Header';
 import { Dashboard } from './compponents/Dashboard';
 import { Breadcrumbs } from './compponents/Breadcrumbs';
 
-import { List } from './crud/List';
+import { List as CrudList } from './crud/List';
 
 export class BasePages {
   constructor() {
@@ -49,7 +49,8 @@ export class Crud extends BasePages {
     let content = (
       <div>
         <Header/>
-        <List/>
+        <Breadcrumbs data={this.breadcrumbs}/>
+        <CrudList/>
       </div>
     );
     this.render(content);
