@@ -1,10 +1,10 @@
 import * as React from "react";
 import {
-    Nav,
-    Navbar,
-    NavItem,
-    NavDropdown,
-    MenuItem
+  Nav,
+  Navbar,
+  NavItem,
+  NavDropdown,
+  MenuItem
 } from "react-bootstrap";
 
 export class Header extends React.Component {
@@ -24,5 +24,5 @@ export class Header extends React.Component {
 }
 
 Header.contextTypes = {
-    urlHome: React.PropTypes.string
+  urlHome: React.PropTypes.string
 }

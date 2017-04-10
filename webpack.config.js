@@ -12,18 +12,18 @@ let plugins = [], outputFile;
 if (env === 'build') {
   outputFile = libraryName + '.min.js';
   plugins.push(new UglifyJsPlugin({
-      minimize: true ,
-      beautify: false,
-      comments: false,
-      compress: {
-          sequences   : true,
-          booleans    : true,
-          loops       : true,
-          unused      : true,
-          warnings    : false,
-          drop_console: true,
-          unsafe      : true
-      }
+    minimize: true ,
+    beautify: false,
+    comments: false,
+    compress: {
+      sequences   : true,
+      booleans    : true,
+      loops       : true,
+      unused      : true,
+      warnings    : false,
+      drop_console: true,
+      unsafe      : true
+    }
   }));
 } else {
   outputFile = libraryName + '.js';
@@ -47,33 +47,33 @@ const config = {
         exclude: /(node_modules|bower_components)/
       },
       {
-          test: /\.(css)$/,
-          use: [
-              { loader: 'style-loader' },
-              { loader: 'css-loader' },
-              // { loader: 'postcss-loader' },
-          ]
+        test: /\.(css)$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          // { loader: 'postcss-loader' },
+        ]
       },
       {
-          test: /\.(scss)$/,
-          use: [
-              { loader: 'style-loader' },
-              { loader: 'css-loader' },
-              // { loader: 'postcss-loader' },
-              { loader: 'sass-loader' }
-          ],
-          exclude: /(node_modules|bower_components)/
+        test: /\.(scss)$/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          // { loader: 'postcss-loader' },
+          { loader: 'sass-loader' }
+        ],
+        exclude: /(node_modules|bower_components)/
       },
       {
-          test: /\.(woff|woff2|eot|ttf)$/,
-          use: 'url-loader'
+        test: /\.(woff|woff2|eot|ttf)$/,
+        use: 'url-loader'
       },
       {
-          test: /\.(svg|png|gif|jpge?g)$/,
-          use: [
-              { loader: 'url-loader' },
-              { loader: 'img-loader' }
-          ]
+        test: /\.(svg|png|gif|jpge?g)$/,
+        use: [
+          { loader: 'url-loader' },
+          { loader: 'img-loader' }
+        ]
       }
       // {
       //   test: /(\.jsx|\.js)$/,

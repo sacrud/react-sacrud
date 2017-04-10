@@ -29,29 +29,30 @@ export class List extends React.Component {
 
   render() {
     const selectRowProp = {
-        mode: 'checkbox',
-        bgColor: ' #4fc3f7',
-        clickToSelect: true,
-        showOnlySelected: true
+      mode: 'checkbox',
+      bgColor: ' #4fc3f7',
+      clickToSelect: true,
+      showOnlySelected: true
     };
     let headerColumns = [];
     Object.keys(this.state.columns).map((key, index) => {
-        let isKey = (key === this.state.key);
-        console.log(isKey, this.state.key, key);
-        headerColumns.push(
-            <TableHeaderColumn dataField={ key } isKey={ isKey } dataSort={ true }>
-                { this.state.columns[key] }
-            </TableHeaderColumn>
-        );
+      let isKey = (key === this.state.key);
+      console.log(isKey, this.state.key, key);
+      headerColumns.push(
+        <TableHeaderColumn dataField={ key } isKey={ isKey } dataSort={ true }>
+          { this.state.columns[key] }
+        </TableHeaderColumn>
+      );
     });
     return (
       <BootstrapTable
-          data={ this.state.rows }
-          multiColumnSort={ 2 }
-          selectRow={ selectRowProp }
-          pagination={ true }
-          striped hover condensed>
-          { headerColumns }
+        data={ this.state.rows }
+        multiColumnSort={ 2 }
+        selectRow={ selectRowProp }
+        deleteRow
+        pagination={ true }
+        striped hover condensed>
+        { headerColumns }
       </BootstrapTable>
     );
   }
