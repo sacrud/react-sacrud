@@ -21,7 +21,7 @@ if (env === 'build') {
       loops       : true,
       unused      : true,
       warnings    : false,
-      drop_console: true,
+      // drop_console: true,
       unsafe      : true
     }
   }));
@@ -43,7 +43,7 @@ const config = {
     rules: [
       {
         test: /(\.jsx|\.js)$/,
-        loader: 'babel-loader?presets[]=stage-0,presets[]=react,presets[]=es2015',
+        loader: 'babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0',
         exclude: /(node_modules|bower_components)/
       },
       {
