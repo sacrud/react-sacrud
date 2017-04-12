@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import {
   BootstrapTable,
   TableHeaderColumn,
@@ -42,9 +43,8 @@ export class List extends React.Component {
       ).then(res => {
         if (res.data.status === true) {
           this.refs.list_table.deleteRow(dropRowKeys);
-        } else if (res.status !== 200) {
-          this.componentDidMount();
         }
+        this.componentDidMount();
       });
     }
   }
@@ -97,5 +97,5 @@ export class List extends React.Component {
 
 List.contextTypes = {
   // AJAX
-  requests: React.PropTypes.func,
+  requests: PropTypes.func,
 }

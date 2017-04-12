@@ -15,6 +15,5 @@ frontend-ncu:
 	npm install
 	ncu -a
 
-
 # vim:ft=make
 #

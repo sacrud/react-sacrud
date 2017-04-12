@@ -1,9 +1,10 @@
 import axios from 'axios';
 import urljoin from 'url-join'
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 import mainCSS from '../../css/main.scss'
-import bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 
 // console.log("Version: " + VERSION);
 
@@ -63,14 +64,14 @@ export class App extends React.Component {
 
 App.childContextTypes = {
   // AJAX
-  requests: React.PropTypes.func,
+  requests: PropTypes.func,
 
   // View URL's
-  urlHome: React.PropTypes.string,
-  urlStatic: React.PropTypes.string,
+  urlHome: PropTypes.string,
+  urlStatic: PropTypes.string,
 
   // API URL's
-  urlApi: React.PropTypes.string,
-  urlApiHome: React.PropTypes.string,
-  urlApiSettings: React.PropTypes.string
+  urlApi: PropTypes.string,
+  urlApiHome: PropTypes.string,
+  urlApiSettings: PropTypes.string
 }

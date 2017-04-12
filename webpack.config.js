@@ -11,20 +11,29 @@ let plugins = [], outputFile;
 
 if (env === 'build') {
   outputFile = libraryName + '.min.js';
-  plugins.push(new UglifyJsPlugin({
-    minimize: true ,
-    beautify: false,
-    comments: false,
-    compress: {
-      sequences   : true,
-      booleans    : true,
-      loops       : true,
-      unused      : true,
-      warnings    : false,
-      // drop_console: true,
-      unsafe      : true
-    }
-  }));
+  // plugins.push(
+  //   new webpack.DefinePlugin({
+  //     'process.env': {
+  //       NODE_ENV: JSON.stringify('production')
+  //     }
+  //   })
+  // );
+  plugins.push(
+    new UglifyJsPlugin({
+      minimize: true ,
+      beautify: false,
+      comments: false,
+      compress: {
+        sequences   : true,
+        booleans    : true,
+        loops       : true,
+        unused      : true,
+        warnings    : false,
+        // drop_console: true,
+        unsafe      : true
+      }
+    })
+  );
 } else {
   outputFile = libraryName + '.js';
 }
@@ -52,7 +61,8 @@ const config = {
           { loader: 'style-loader' },
           { loader: 'css-loader' },
           // { loader: 'postcss-loader' },
-        ]
+        ],
+        // exclude: /(node_modules|bower_components)/
       },
       {
         test: /\.(scss)$/,
@@ -73,13 +83,9 @@ const config = {
         use: [
           { loader: 'url-loader' },
           { loader: 'img-loader' }
-        ]
+        ],
+        // exclude: /(node_modules|bower_components)/
       }
-      // {
-      //   test: /(\.jsx|\.js)$/,
-      //   loader: "eslint-loader",
-      //   exclude: /node_modules/
-      // }
     ]
   },
   resolve: {

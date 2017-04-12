@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as React from "react";
+import PropTypes from 'prop-types';
 import { Grid, Row, Col } from "react-bootstrap";
 
 import { Card } from './Card'
@@ -56,8 +57,8 @@ export class Dashboard extends React.Component {
 
 Dashboard.contextTypes = {
   // AJAX
-  requests: React.PropTypes.func,
+  requests: PropTypes.func,
 
   // API URL's
-  urlApiHome: React.PropTypes.string
+  urlApiHome: PropTypes.string
 }

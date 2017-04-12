@@ -1,4 +1,5 @@
 import * as React from "react";
+import PropTypes from 'prop-types';
 import {
   Nav,
   Navbar,
@@ -24,5 +25,5 @@ export class Header extends React.Component {
 }
 
 Header.contextTypes = {
-  urlHome: React.PropTypes.string
+  urlHome: PropTypes.string
 }
