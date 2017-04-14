@@ -31,13 +31,14 @@ export class List extends React.Component {
     });
   }
 
+  // DELETE Action
   handleDeleteButtonClick = (onClick) => {
     let dropRowKeys = this.refs.list_table.state.selectedRowKeys;
     if (confirm('Are you sure you want to delete?')) {
       this.context.requests.delete(
         './', {
           'params': {
-            items: dropRowKeys
+            dropRowKeys: dropRowKeys
           }
         }
       ).then(res => {
@@ -60,9 +61,39 @@ export class List extends React.Component {
     );
   }
 
+  // EDIT Action
+  onBeforeSaveCell = (row, cellName, cellValue) => {
+    // You can do any validation on here for editing value,
+    // return false for reject the editing
+    let status = undefined;
+    this.context.requests.put(
+      './', {
+        'params': {
+          cellName: cellName,
+          cellValue: cellValue
+        }
+      }
+    ).then(res => {
+      if (res.data.status === true) {
+        status = true;
+      } else {
+        status = false;
+        this.componentDidMount();
+      }
+    });
+    while (status === undefined) {
+      
+    }
+  }
+
   render() {
     const options = {
       deleteBtn: this.createCustomDeleteButton
+    };
+    const cellEditProp = {
+      mode: 'click',
+      blurToSave: true,
+      beforeSaveCell: this.onBeforeSaveCell
     };
     const selectRowProp = {
       mode: 'checkbox',
@@ -85,8 +116,9 @@ export class List extends React.Component {
         options={ options }
         data={ this.state.rows }
         multiColumnSort={ 2 }
-        selectRow={ selectRowProp }
         deleteRow
+        selectRow={ selectRowProp }
+        cellEdit={ cellEditProp }
         pagination={ true }
         striped hover condensed>
         { headerColumns }

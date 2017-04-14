@@ -11,13 +11,13 @@ let plugins = [], outputFile;
 
 if (env === 'build') {
   outputFile = libraryName + '.min.js';
-  // plugins.push(
-  //   new webpack.DefinePlugin({
-  //     'process.env': {
-  //       NODE_ENV: JSON.stringify('production')
-  //     }
-  //   })
-  // );
+  plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    })
+  );
   plugins.push(
     new UglifyJsPlugin({
       minimize: true ,
@@ -62,7 +62,6 @@ const config = {
           { loader: 'css-loader' },
           // { loader: 'postcss-loader' },
         ],
-        // exclude: /(node_modules|bower_components)/
       },
       {
         test: /\.(scss)$/,
@@ -84,7 +83,6 @@ const config = {
           { loader: 'url-loader' },
           { loader: 'img-loader' }
         ],
-        // exclude: /(node_modules|bower_components)/
       }
     ]
   },
