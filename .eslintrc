@@ -182,5 +182,11 @@
     "wrap-iife": [2, "any"],
     "wrap-regex": 0,
     "yoda": [2, "never"]
+  },
+
+  "sort-imports": ["error", {
+      "ignoreCase": false,
+      "ignoreMemberSort": false,
+      "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
   }
 }

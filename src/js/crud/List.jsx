@@ -65,25 +65,22 @@ export class List extends React.Component {
   onBeforeSaveCell = (row, cellName, cellValue) => {
     // You can do any validation on here for editing value,
     // return false for reject the editing
-    let status = undefined;
-    this.context.requests.put(
-      './', {
-        'params': {
-          cellName: cellName,
-          cellValue: cellValue
-        }
+
+    var request = new XMLHttpRequest();
+    var params = "callName=" + cellName + "&cellValue=" + cellValue;
+    request.open('PUT', './', false);
+    request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    request.send(params);
+
+    if (request.status === 200) {
+      console.log(request.responseText);
+      if (JSON.parse(request.responseText).status === true) {
+        return true;
       }
-    ).then(res => {
-      if (res.data.status === true) {
-        status = true;
-      } else {
-        status = false;
-        this.componentDidMount();
-      }
-    });
-    while (status === undefined) {
-      
     }
+
+    componentDidMount();
+    return false;
   }
 
   render() {
