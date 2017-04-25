@@ -67,19 +67,27 @@ export class List extends React.Component {
     // return false for reject the editing
 
     var request = new XMLHttpRequest();
-    var params = "callName=" + cellName + "&cellValue=" + cellValue;
+    var params = "cellName=" + cellName
+      + "&cellValue=" + cellValue
+      + "&row=" + JSON.stringify(row);
     request.open('PUT', './', false);
-    request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    request.setRequestHeader(
+      'X-Requested-With',
+      'XMLHttpRequest'
+    );
+    request.setRequestHeader(
+      "Content-type",
+      "application/x-www-form-urlencoded"
+    );
     request.send(params);
 
     if (request.status === 200) {
-      console.log(request.responseText);
       if (JSON.parse(request.responseText).status === true) {
         return true;
       }
     }
 
-    componentDidMount();
+    this.componentDidMount();
     return false;
   }
 
