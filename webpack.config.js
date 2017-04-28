@@ -1,23 +1,14 @@
-/*global __dirname, require, module*/
-
 const webpack = require('webpack');
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const path = require('path');
 const env  = require('yargs').argv.env; // use --env with webpack 2
 
+let debug = env !== 'build';
 let libraryName = 'react-sacrud';
+let plugins = [];
+let outputFile = libraryName + '.min.js';
 
-let plugins = [], outputFile;
-
-if (env === 'build') {
-  outputFile = libraryName + '.min.js';
-  plugins.push(
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
-  );
+if (!debug) {
   plugins.push(
     new UglifyJsPlugin({
       minimize: true ,
@@ -28,21 +19,20 @@ if (env === 'build') {
         booleans    : true,
         loops       : true,
         unused      : true,
+        dead_code   : true,
         warnings    : false,
-        // drop_console: true,
+        drop_console: true,
         unsafe      : true
       }
     })
   );
-} else {
-  outputFile = libraryName + '.js';
 }
 
 const config = {
-  entry: __dirname + '/src/index.js',
+  entry: path.join(__dirname, '/src/index.js'),
   devtool: 'source-map',
   output: {
-    path: __dirname + '/lib',
+    path: path.join(__dirname, '/lib'),
     filename: outputFile,
     library: libraryName,
     libraryTarget: 'umd',
@@ -89,7 +79,7 @@ const config = {
   resolve: {
     modules: [
       path.resolve('./src'),
-      path.resolve(__dirname, 'node_modules'),
+      path.join(__dirname, 'node_modules'),
     ],
     extensions: ['.json', '.js', '.jsx']
   },

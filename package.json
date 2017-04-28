@@ -4,7 +4,7 @@
   "description": "React AJAX CRUD interface connected to any backends",
   "main": "lib/react-sacrud.min.js",
   "scripts": {
-    "build": "webpack --env build",
+    "build": "NODE_ENV=production webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
     "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js"
@@ -59,8 +59,8 @@
     "bootstrap": "^3.3.7",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
-    "react-bootstrap": "^0.30.10",
-    "react-bootstrap-table": "^3.2.1",
+    "react-bootstrap": "^0.31.0",
+    "react-bootstrap-table": "^3.2.2",
     "react-dom": "^15.5.4"
   }
 }

@@ -22,23 +22,40 @@ export class App extends React.Component {
 
     this.state = {
       urlHome: '',
-      urlStatic: ''
+      urlStatic: '',
+      title: 'SACRUD'
     }
   }
 
   componentDidMount() {
+    // Set title value from HTML data
+    if (this.props.title) {
+      this.setState({
+        title: this.props.title,
+      });
+    }
+
+    // Set values from request
     this.requests.get(
       urljoin(this.props.url_api, this.API_SETTINGS)
     ).then(res => {
       this.setState({
         urlHome: res.data.url_home,
-        urlStatic: res.data.url_static
+        urlStatic: res.data.url_static,
       });
+      if (res.data.title) {
+        this.setState({
+          title: res.data.title
+        });
+      }
     });
   }
 
   getChildContext() {
     return {
+      // Common
+      title: this.state.title,
+
       // AJAX
       requests: this.requests,
 
@@ -63,6 +80,9 @@ export class App extends React.Component {
 }
 
 App.childContextTypes = {
+  // Common
+  title: PropTypes.string,
+
   // AJAX
   requests: PropTypes.func,
 

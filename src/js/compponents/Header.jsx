@@ -11,12 +11,13 @@ import {
 export class Header extends React.Component {
 
   render() {
+    let title = this.context.title;
     let urlHome = this.context.urlHome;
     return (
       <Navbar inverse>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href={urlHome}>SACRUD</a>
+            <a href={urlHome}>{title}</a>
           </Navbar.Brand>
         </Navbar.Header>
       </Navbar>
@@ -25,5 +26,6 @@ export class Header extends React.Component {
 }
 
 Header.contextTypes = {
+  title: PropTypes.string,
   urlHome: PropTypes.string
 }
