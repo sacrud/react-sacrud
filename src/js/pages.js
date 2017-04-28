@@ -6,7 +6,8 @@ import { Header } from './compponents/Header';
 import { Dashboard } from './compponents/Dashboard';
 import { Breadcrumbs } from './compponents/Breadcrumbs';
 
-import { List as CrudList } from './crud/List';
+import { List as CRUDList } from './crud/List';
+import { Edit as CRUDEdit } from './crud/Edit';
 
 export class BasePages {
   constructor() {
@@ -50,7 +51,18 @@ export class Crud extends BasePages {
       <div>
         <Header/>
         <Breadcrumbs data={this.breadcrumbs}/>
-        <CrudList/>
+        <CRUDList/>
+      </div>
+    );
+    this.render(content);
+  }
+
+  pageEdit() {
+    let content = (
+      <div>
+        <Header/>
+        <Breadcrumbs data={this.breadcrumbs}/>
+        <CRUDEdit/>
       </div>
     );
     this.render(content);
