@@ -14,6 +14,7 @@ export class App extends React.Component {
     super(props);
 
     this.requests = axios.create({
+      withCredentials: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'},
     }),
 
