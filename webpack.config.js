@@ -81,7 +81,7 @@ const config = {
       path.resolve('./src'),
       path.join(__dirname, 'node_modules'),
     ],
-    extensions: ['.json', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   plugins: plugins
 };

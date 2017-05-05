@@ -82,9 +82,11 @@ export class List extends React.Component {
     request.send(params);
 
     if (request.status === 200) {
-      if (JSON.parse(request.responseText).status === true) {
-        return true;
-      }
+      try {
+        if (JSON.parse(request.responseText).status === true) {
+          return true;
+        }
+      } catch(e) {}
     }
 
     this.componentDidMount();
