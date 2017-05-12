@@ -16,16 +16,16 @@ export class App extends React.Component {
     this.requests = axios.create({
       withCredentials: true,
       headers: {'X-Requested-With': 'XMLHttpRequest'},
-    }),
+    });
 
-    this.API_HOME = 'home'
-    this.API_SETTINGS = 'settings'
+    this.API_HOME = 'home';
+    this.API_SETTINGS = 'settings';
 
     this.state = {
       urlHome: '',
       urlStatic: '',
       title: 'SACRUD'
-    }
+    };
   }
 
   componentDidMount() {
